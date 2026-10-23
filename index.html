@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Future Electronic Voting Machine</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <header>
+
+
+        <div class="title">
+            <h1>Future Electronic Voting Machine</h1>
+
+            <p>Electronic Voting Machine</p>
+
+        </div>
+
+    </header>
+
+    <main class="login-redirect">
+        <section class="login-redirect-card">
+            <h2>Voter login required</h2>
+            <p>Please open the separate login page to continue.</p>
+            <a class="login-link-btn" href="login.html">Open Voter Login</a>
+        </section>
+    </main>
+
+    <div id="votingApp" hidden>
+        <div class="container">
+
+
+            <div class="left-panel">
+
+                <h2>🧑 Voter Information</h2>
+
+                <input type="text" id="name" placeholder="Enter Full Name">
+
+                <input type="number" id="age" placeholder="Enter Age (18+)">
+
+                <h2>Select Candidate</h2>
+
+                <div class="candidate-grid">
+
+
+
+                    <label class="candidate-card">
+
+                        <input type="radio" name="candidate" value="Lotus">
+
+                        <div class="card">
+
+                            <span class="symbol">🌸</span>
+
+                            <h3>Lotus</h3>
+
+                            <p>National Party</p>
+
+                        </div>
+
+                    </label>
+
+
+
+                    <label class="candidate-card">
+
+                        <input type="radio" name="candidate" value="Hand">
+
+                        <div class="card">
+
+                            <span class="symbol">✋</span>
+
+                            <h3>Hand</h3>
+
+                            <p>People's Party</p>
+
+                        </div>
+
+                    </label>
+
+
+
+                    <label class="candidate-card">
+
+                        <input type="radio" name="candidate" value="Bicycle">
+
+                        <div class="card">
+
+                            <span class="symbol">🚲</span>
+
+                            <h3>Bicycle</h3>
+
+                            <p>Youth Party</p>
+
+                        </div>
+
+                    </label>
+
+
+
+                    <label class="candidate-card">
+
+                        <input type="radio" name="candidate" value="Bow">
+
+                        <div class="card">
+
+                            <span class="symbol">🏹</span>
+
+                            <h3>Bow & Arrow</h3>
+
+                            <p>Development Party</p>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="candidate-card">
+
+                        <input type="radio" name="candidate" value="Tree">
+
+                        <div class="card">
+
+                            <span class="symbol">🌳</span>
+
+                            <h3>Tree</h3>
+
+                            <p>Green Party</p>
+
+                        </div>
+
+                    </label>
+
+
+
+                    <label class="candidate-card">
+
+                        <input type="radio" name="candidate" value="Star">
+
+                        <div class="card">
+
+                            <span class="symbol">⭐</span>
+
+                            <h3>Star</h3>
+
+                            <p>Future Party</p>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+                <button class="vote-btn" onclick="castVote()">
+
+                    🗳️ SUBMIT YOUR VOTE
+
+                </button>
+
+                <button class="result-btn" onclick="toggleResult()">
+
+                    📊 ELECTION RESULT PANEL
+
+                </button>
+
+                <p id="message"></p>
+
+            </div>
+
+            <!-- Result panel -->
+            <div class="right-panel" id="resultPanel" style="display:none;">
+
+                <h2>📊 Election Result Panel</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Symbol</th>
+
+                            <th>Candidate</th>
+
+                            <th>Votes</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>🌸</td>
+
+                            <td>Lotus</td>
+
+                            <td id="lotus">0</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>✋</td>
+
+                            <td>Hand</td>
+
+                            <td id="hand">0</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>🚲</td>
+
+                            <td>Bicycle</td>
+
+                            <td id="bicycle">0</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>🏹</td>
+
+                            <td>Bow & Arrow</td>
+
+                            <td id="bow">0</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>🌳</td>
+
+                            <td>Tree</td>
+
+                            <td id="tree">0</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>⭐</td>
+
+                            <td>Star</td>
+
+                            <td id="star">0</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="result-box">
+
+                    <h3>Total Votes</h3>
+
+                    <h1 id="totalVotes">0</h1>
+
+                </div>
+
+                <button class="winner-btn" onclick="showWinner()">
+
+                    🏆 DECLARE WINNER
+
+                </button>
+
+                <button class="reset-btn" onclick="resetElection()">
+
+                    🔄 RESET ELECTION
+
+                </button>
+
+                <h2 id="winnerText"></h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="demo-banner">DEMO MODE — Login details are not verified; votes are stored only in this browser.
+        </div>
+        <button id="logoutBtn" class="logout-btn" type="button">← Back to login</button>
+    </div>
+
+    <footer>
+
+        <p>
+
+            © 2026 Future Electronic Voting Machine |
+            Educational Project Only |
+            Not an official government website. Demo only; no real votes are recorded.
+
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
